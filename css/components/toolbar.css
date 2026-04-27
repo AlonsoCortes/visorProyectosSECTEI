@@ -1,0 +1,27 @@
+.toolbar {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.toolbar-btn {
+  background: #ffffff;
+  border: none;
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra);
+  cursor: pointer;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  font-family: var(--fuente-principal);
+  color: var(--color-texto);
+  transition: background 0.2s;
+}
+
+.toolbar-btn:hover {
+  background: var(--color-primario);
+  color: #ffffff;
+}

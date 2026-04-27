@@ -1,0 +1,26 @@
+/* Variables institucionales */
+:root {
+  --color-primario: #C8102E;
+  --color-secundario: #1A3A5C;
+  --color-fondo: #f4f4f4;
+  --color-texto: #222222;
+  --fuente-principal: 'Segoe UI', Arial, sans-serif;
+  --radio-borde: 4px;
+  --sombra: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Reset básico */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: var(--fuente-principal);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  overflow: hidden;
+}
