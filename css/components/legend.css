@@ -1,0 +1,60 @@
+.map-legend {
+  position: absolute;
+  bottom: 32px;
+  right: 10px;
+  z-index: 4;
+  background: rgba(255, 255, 255, 0.93);
+  backdrop-filter: blur(4px);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra-sm);
+  padding: 10px 12px;
+  min-width: 200px;
+  font-family: var(--fuente);
+}
+
+.map-legend-title {
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--color-secundario);
+  margin-bottom: 7px;
+}
+
+.map-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 5px;
+}
+.map-legend-item:last-child { margin-bottom: 0; }
+
+.map-legend-dot {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0,0,0,.15);
+}
+
+.map-legend-label {
+  font-size: .73rem;
+  color: var(--color-texto);
+  line-height: 1.3;
+}
+
+.map-legend-sep {
+  border-top: 1px solid var(--color-borde);
+  margin: 6px 0;
+}
+
+/* Símbolo de cluster: círculo gris con borde blanco, igual que en el mapa */
+.map-legend-cluster {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #546E7A;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1.5px #546E7A;
+}

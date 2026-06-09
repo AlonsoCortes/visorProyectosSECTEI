@@ -3,19 +3,81 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Geovisor SECTEI</title>
+  <title>Visor de Proyectos — SECTEI</title>
 
-  <!-- MapLibre GL CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.css" />
+  <!-- MapLibre GL JS CDN -->
+  <script src="https://unpkg.com/maplibre-gl@^5.6.2/dist/maplibre-gl.js"></script>
+  <link href="https://unpkg.com/maplibre-gl@^5.6.2/dist/maplibre-gl.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css">
 
-  <!-- Estilos propios -->
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/map.css" />
+  <link rel="stylesheet" href="css/components/header.css" />
+  <link rel="stylesheet" href="css/components/sidebar.css" />
+  <link rel="stylesheet" href="css/components/filters.css" />
+  <link rel="stylesheet" href="css/components/list.css" />
+  <link rel="stylesheet" href="css/components/detail.css" />
   <link rel="stylesheet" href="css/components/popup.css" />
+  <link rel="stylesheet" href="css/components/legend.css" />
   <link rel="stylesheet" href="css/components/toolbar.css" />
 </head>
 <body>
-  <div id="map"></div>
+
+  <header id="app-header">
+    <div class="header-brand">
+      <span class="header-sectei">SECTEI</span>
+      <span class="header-sep">|</span>
+      <span class="header-title">Visor de Proyectos Educativos, Científicos, Tecnológicos y de Innovación.</span>
+    </div>
+    <p class="header-subtitle">Ciudad de México</p>
+  </header>
+
+  <main id="app-main">
+
+    <!-- Panel izquierdo: filtros + lista -->
+    <aside id="sidebar-left">
+      <section class="sidebar-section" id="section-filters">
+        <h2 class="sidebar-section-title">Filtros</h2>
+
+        <div class="filter-group">
+          <label class="filter-label" for="filter-campo">Campo de estudio</label>
+          <select class="filter-select" id="filter-campo">
+            <option value="">Todos los campos</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label" for="filter-tipo">Tipo de proyecto</label>
+          <select class="filter-select" id="filter-tipo" disabled>
+            <option value="">Todos los tipos</option>
+          </select>
+        </div>
+
+        <button class="filter-clear-btn" id="filter-clear">Limpiar filtros</button>
+      </section>
+
+      <section class="sidebar-section sidebar-section--grow" id="section-list">
+        <div class="list-header">
+          <h2 class="sidebar-section-title">Proyectos</h2>
+          <span class="results-count" id="results-count"></span>
+        </div>
+        <div id="results-list" class="results-list"></div>
+      </section>
+    </aside>
+
+    <!-- Mapa central -->
+    <div id="map"></div>
+
+    <!-- Panel derecho: detalle del proyecto -->
+    <aside id="sidebar-right">
+      <div id="detail-panel" class="detail-panel">
+        <div class="detail-placeholder">
+          <p>Selecciona un proyecto en el mapa o en la lista para ver su información completa.</p>
+        </div>
+      </div>
+    </aside>
+
+  </main>
 
   <script type="module" src="js/app.js"></script>
 </body>

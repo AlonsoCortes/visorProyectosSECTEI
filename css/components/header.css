@@ -1,0 +1,46 @@
+#app-header {
+  height: var(--header-h);
+  background: var(--color-secundario);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  flex-shrink: 0;
+  box-shadow: var(--sombra-md);
+  z-index: 10;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-sectei {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-primario);
+  letter-spacing: .5px;
+}
+
+.header-sep {
+  color: rgba(255,255,255,.35);
+  font-size: 1.2rem;
+}
+
+.header-title {
+  font-size: .95rem;
+  font-weight: 500;
+}
+
+.header-subtitle {
+  font-size: .8rem;
+  color: rgba(255,255,255,.6);
+}
+
+#app-main {
+  display: flex;
+  height: calc(100vh - var(--header-h));
+  overflow: hidden;
+}

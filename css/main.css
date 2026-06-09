@@ -1,26 +1,26 @@
-/* Variables institucionales */
 :root {
-  --color-primario: #C8102E;
-  --color-secundario: #1A3A5C;
-  --color-fondo: #f4f4f4;
-  --color-texto: #222222;
-  --fuente-principal: 'Segoe UI', Arial, sans-serif;
-  --radio-borde: 4px;
-  --sombra: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --color-primario:    #C8102E;
+  --color-secundario:  #1A3A5C;
+  --color-fondo:       #F5F5F5;
+  --color-superficie:  #FFFFFF;
+  --color-borde:       #E0E0E0;
+  --color-texto:       #212121;
+  --color-texto-sec:   #616161;
+  --fuente:            'Segoe UI', Arial, sans-serif;
+  --radio:             6px;
+  --sombra-sm:         0 1px 4px rgba(0,0,0,.12);
+  --sombra-md:         0 2px 10px rgba(0,0,0,.16);
+  --header-h:          56px;
+  --sidebar-left-w:    400px;
+  --sidebar-right-w:   340px;
 }
 
-/* Reset básico */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
   height: 100%;
-  width: 100%;
-  font-family: var(--fuente-principal);
-  background-color: var(--color-fondo);
+  font-family: var(--fuente);
   color: var(--color-texto);
+  background: var(--color-fondo);
   overflow: hidden;
 }

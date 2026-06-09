@@ -1,24 +1,41 @@
 import { showPopup } from '../ui/popup.js';
+import { CLUSTER_LAYER_ID, POINTS_LAYER_ID } from './clusters.js';
 
 /**
- * Registra los eventos de interacción del mapa para las capas indicadas.
+ * Registra eventos de interacción del mapa.
  * @param {maplibregl.Map} map
- * @param {string[]} layerIds - IDs de las capas que responden a eventos
+ * @param {Function} onPointClick - callback(id_proyecto) al seleccionar un punto
  */
-export function registerMapEvents(map, layerIds = []) {
-  layerIds.forEach((layerId) => {
-    map.on('click', layerId, (e) => {
-      const feature = e.features[0];
-      if (!feature) return;
-      showPopup(map, e.lngLat, feature.properties);
-    });
+export function registerMapEvents(map, onPointClick) {
 
-    map.on('mouseenter', layerId, () => {
-      map.getCanvas().style.cursor = 'pointer';
-    });
+  // Clic en cluster → hacer zoom
+  map.on('click', CLUSTER_LAYER_ID, async (e) => {
+    const feature = e.features[0];
+    if (!feature) return;
 
-    map.on('mouseleave', layerId, () => {
-      map.getCanvas().style.cursor = '';
+    const clusterId = feature.properties.cluster_id;
+    const center    = feature.geometry.coordinates;
+
+    try {
+      const zoom = await map.getSource('proyectos').getClusterExpansionZoom(clusterId);
+      map.easeTo({ center, zoom });
+    } catch (_) {
+      map.easeTo({ center, zoom: map.getZoom() + 2 });
+    }
+  });
+
+  // Clic en punto individual → puebla panel derecho + popup
+  map.on('click', POINTS_LAYER_ID, (e) => {
+    const feature = e.features[0];
+    if (!feature) return;
+    onPointClick?.(feature.properties.id_proyecto);
+    showPopup(map, e.lngLat, feature.properties, (idProyecto) => {
+      onPointClick?.(idProyecto);
     });
   });
+
+  map.on('mouseenter', CLUSTER_LAYER_ID, () => { map.getCanvas().style.cursor = 'pointer'; });
+  map.on('mouseleave', CLUSTER_LAYER_ID, () => { map.getCanvas().style.cursor = ''; });
+  map.on('mouseenter', POINTS_LAYER_ID,  () => { map.getCanvas().style.cursor = 'pointer'; });
+  map.on('mouseleave', POINTS_LAYER_ID,  () => { map.getCanvas().style.cursor = ''; });
 }

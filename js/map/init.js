@@ -1,5 +1,6 @@
-import maplibregl from 'https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.esm.js';
 import { MAP_CONFIG } from '../config.js';
+
+// maplibregl is available as a global loaded via <script> in index.html
 
 /**
  * Crea e inicializa el mapa MapLibre en el contenedor indicado.
